@@ -1,4 +1,5 @@
 import 'package:advanced_flutter/data/data_sources/local_ds.dart';
+import 'package:advanced_flutter/domain/entities/home_object.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../domain/entities/auth.dart';
@@ -18,6 +19,27 @@ class RepositoryImpl implements Repository {
     this._remoteDS,
     LocalDSImpl localDSImpl,
   );
+
+  @override
+  Future<Either<Failure, HomeObject>> getHomeData() async {
+    if (await _networkInfo.isConeected) {
+      try {
+        final resetPasswordResponse = await _remoteDS.getHomeData();
+        if (resetPasswordResponse.status == ApiInternalStatus.success) {
+          return Right(resetPasswordResponse.toDomain());
+        } else {
+          return Left(Failure(
+              code: ApiInternalStatus.failure,
+              message:
+                  resetPasswordResponse.message ?? ResponseMessage.unknown));
+        }
+      } catch (error) {
+        return Left(ErrorHandler.handle(error).failure);
+      }
+    } else {
+      return Left(ErrorSource.noInternetConnection.getFailure());
+    }
+  }
 
   @override
   Future<Either<Failure, Auth>> login(LoginRequest loginRequest) async {

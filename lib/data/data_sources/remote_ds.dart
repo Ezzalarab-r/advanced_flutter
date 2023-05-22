@@ -3,6 +3,7 @@ import '../requestes/login_request.dart';
 import '../responses/responses.dart';
 
 abstract class RemoteDS {
+  Future<HomeResponse> getHomeData();
   Future<AuthResponse> login(LoginRequest loginRequest);
   Future<ForgotPasswordResponse> forgotPassword(String email);
   Future<AuthResponse> register(RegisterRequest loginRequest);
@@ -11,6 +12,11 @@ abstract class RemoteDS {
 class RemoteDSImpl implements RemoteDS {
   final AppServiceClient _appServiceClient;
   RemoteDSImpl(this._appServiceClient);
+
+  @override
+  Future<HomeResponse> getHomeData() async {
+    return await _appServiceClient.getHomeData();
+  }
 
   @override
   Future<AuthResponse> login(LoginRequest loginRequest) async {
