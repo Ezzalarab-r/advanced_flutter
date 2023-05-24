@@ -21,7 +21,7 @@ TextStyle _getTextStyle({
 TextStyle getLightStyle({
   double fontSize = FontSize.s12,
   FontWeight fontWeight = FontWeightManager.light,
-  Color fontColor = ColorManager.darkGrey,
+  Color fontColor = ColorManager.grey_3,
 }) {
   return TextStyle(
     fontFamily: FontConstants.fontFamily,
@@ -36,7 +36,7 @@ TextStyle getLightStyle({
 TextStyle getRegularStyle({
   double fontSize = FontSize.s12,
   FontWeight fontWeight = FontWeightManager.regular,
-  Color fontColor = ColorManager.darkGrey,
+  Color fontColor = ColorManager.grey_3,
 }) {
   return TextStyle(
     fontFamily: FontConstants.fontFamily,
@@ -51,7 +51,7 @@ TextStyle getRegularStyle({
 TextStyle getMediumStyle({
   double fontSize = FontSize.s12,
   FontWeight fontWeight = FontWeightManager.medium,
-  Color fontColor = ColorManager.darkGrey,
+  Color fontColor = ColorManager.grey_3,
 }) {
   return TextStyle(
     fontFamily: FontConstants.fontFamily,
@@ -66,7 +66,7 @@ TextStyle getMediumStyle({
 TextStyle getSemiBoldStyle({
   double fontSize = FontSize.s12,
   FontWeight fontWeight = FontWeightManager.semiBold,
-  Color fontColor = ColorManager.darkGrey,
+  Color fontColor = ColorManager.grey_3,
 }) {
   return TextStyle(
     fontFamily: FontConstants.fontFamily,
@@ -81,7 +81,7 @@ TextStyle getSemiBoldStyle({
 TextStyle getBoldStyle({
   double fontSize = FontSize.s12,
   FontWeight fontWeight = FontWeightManager.bold,
-  Color fontColor = ColorManager.darkGrey,
+  Color fontColor = ColorManager.grey_3,
 }) {
   return TextStyle(
     fontFamily: FontConstants.fontFamily,

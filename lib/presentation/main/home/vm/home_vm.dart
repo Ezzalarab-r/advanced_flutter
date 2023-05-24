@@ -21,8 +21,7 @@ class HomeVM extends BaseVM with HomeVMInput, HomeVMOutput {
 
   @override
   void start() {
-    // view model shold tell view content
-    inputState.add(ContentState());
+    _getHomeData();
   }
 
   @override

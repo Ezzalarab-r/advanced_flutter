@@ -16,23 +16,27 @@ ThemeData getAppTheme() {
     // Text Theme
     textTheme: TextTheme(
       headlineLarge: getBoldStyle(
-        fontColor: ColorManager.darkGrey,
+        fontColor: ColorManager.grey_3,
         fontSize: FontSize.s18,
       ),
       headlineMedium: getRegularStyle(
-        fontColor: ColorManager.darkGrey,
+        fontColor: ColorManager.grey_3,
         fontSize: FontSize.s16,
       ),
       displayLarge: getLightStyle(
-        fontColor: ColorManager.darkGrey,
+        fontColor: ColorManager.grey_3,
         fontSize: FontSize.s16,
       ),
       titleMedium: getMediumStyle(
         fontColor: ColorManager.primary,
         fontSize: FontSize.s16,
       ),
-      bodyLarge: getRegularStyle(fontColor: ColorManager.lightGrey),
-      bodySmall: getRegularStyle(fontColor: ColorManager.grey),
+      bodyLarge: getRegularStyle(fontColor: ColorManager.grey3),
+      bodySmall: getRegularStyle(fontColor: ColorManager.grey_2),
+      labelSmall: getBoldStyle(
+        fontColor: ColorManager.primary,
+        fontSize: FontSize.s12,
+      ),
     ),
 
     // Card View Theme
@@ -57,7 +61,7 @@ ThemeData getAppTheme() {
     // Button Theme
     buttonTheme: ButtonThemeData(
       shape: const StadiumBorder(),
-      disabledColor: ColorManager.lightGrey,
+      disabledColor: ColorManager.grey3,
       buttonColor: ColorManager.primary,
       splashColor: ColorManager.primaryLight,
     ),
@@ -81,7 +85,7 @@ ThemeData getAppTheme() {
       contentPadding: const EdgeInsets.all(AppPadding.p8),
       hintStyle: getRegularStyle(
         fontSize: FontSize.s14,
-        fontColor: ColorManager.lightGrey,
+        fontColor: ColorManager.grey3,
       ),
       labelStyle: getMediumStyle(
         fontColor: ColorManager.grey,
@@ -118,7 +122,7 @@ ThemeData getAppTheme() {
       ),
       disabledBorder: OutlineInputBorder(
         borderSide: const BorderSide(
-          color: ColorManager.darkGrey,
+          color: ColorManager.grey_3,
           width: AppSize.s1_5,
         ),
         borderRadius: BorderRadius.circular(AppSize.s8),
