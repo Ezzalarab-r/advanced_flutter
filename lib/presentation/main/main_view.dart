@@ -5,10 +5,10 @@ import '../../app/di.dart';
 import '../resources/strings_manager.dart';
 import '../resources/colors_manager.dart';
 import '../resources/values_manager.dart';
-import 'pages/home/v/home_v.dart';
-import 'pages/notifications/v/notifications_v.dart';
-import 'pages/search/v/search_v.dart';
-import 'pages/settings/v/settings_v.dart';
+import 'home/v/home_v.dart';
+import 'notifications/v/notifications_v.dart';
+import 'search/v/search_v.dart';
+import 'settings/v/settings_v.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});

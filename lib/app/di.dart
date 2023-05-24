@@ -1,4 +1,6 @@
+import 'package:advanced_flutter/domain/usecases/home_uc.dart';
 import 'package:advanced_flutter/domain/usecases/register_uc.dart';
+import 'package:advanced_flutter/presentation/main/home/vm/home_vm.dart';
 import 'package:advanced_flutter/presentation/register/vm/register_vm.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -78,5 +80,12 @@ Future<void> initRegisterModule() async {
     gi.registerFactory<RegisterUC>(() => RegisterUC(gi<Repository>()));
     gi.registerFactory<RegisterVM>(() => RegisterVM(gi<RegisterUC>()));
     gi.registerFactory<ImagePicker>(() => ImagePicker());
+  }
+}
+
+Future<void> initHomeModule() async {
+  if (!gi.isRegistered<HomeUC>()) {
+    gi.registerFactory<HomeUC>(() => HomeUC(gi<Repository>()));
+    gi.registerFactory<HomeVM>(() => HomeVM(gi<HomeUC>()));
   }
 }
