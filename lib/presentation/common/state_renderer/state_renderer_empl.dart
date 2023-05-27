@@ -91,7 +91,7 @@ extension FlowStateExtension on FlowState {
     switch (runtimeType) {
       case LoadingState:
         {
-          dismissDialog(context);
+          // dismissDialog(context);
           if (getStateRendererType() == StateRendererType.popupLoadingState) {
             // Show popup loading
             showPopup(

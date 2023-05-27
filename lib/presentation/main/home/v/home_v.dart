@@ -40,7 +40,7 @@ class _HomeVState extends State<HomeV> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Center(
       child: SingleChildScrollView(
         child: StreamBuilder<FlowState>(
           stream: _homeVM.outputState,
@@ -52,7 +52,7 @@ class _HomeVState extends State<HomeV> {
                     _homeVM.start();
                   },
                 ) ??
-                _getContnetWidget();
+                const SizedBox();
           },
         ),
       ),
@@ -91,8 +91,7 @@ class _HomeVState extends State<HomeV> {
                 borderRadius: BorderRadius.all(
                   Radius.circular(AppSize.s12),
                 ),
-                side:
-                    BorderSide(color: ColorManager.primary, width: AppSize.s1),
+                side: BorderSide(color: ColorManager.white, width: AppSize.s1),
               ),
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(
@@ -201,52 +200,48 @@ class _HomeVState extends State<HomeV> {
 
   Widget _getStoresWidget(List<Store>? stores) {
     if (stores != null) {
-      return Padding(
-        padding: const EdgeInsets.only(
-          right: AppPadding.p12,
-          top: AppPadding.p12,
-        ),
-        child: Container(
-          height: AppSize.s150,
-          margin: const EdgeInsets.symmetric(vertical: AppMargin.m12),
-          child: Flex(direction: Axis.vertical, children: [
-            GridView.count(
-              crossAxisCount: AppSize.s2.toInt(),
-              crossAxisSpacing: AppSize.s8,
-              physics: const ScrollPhysics(),
-              shrinkWrap: true,
-              children: List.generate(stores.length, (index) {
-                Store store = stores[index];
-                return InkWell(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(Routes.storeDetailsRoute);
-                  },
-                  child: Card(
-                    elevation: AppSize.s4,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(AppSize.s4),
-                      ),
-                      side: BorderSide(
-                          color: ColorManager.primary, width: AppSize.s1),
+      return Container(
+        padding: const EdgeInsets.all(AppSize.s10),
+        margin: const EdgeInsets.symmetric(vertical: AppMargin.m12),
+        child: Flex(direction: Axis.vertical, children: [
+          GridView.count(
+            crossAxisCount: AppSize.s2.toInt(),
+            crossAxisSpacing: AppSize.s8,
+            physics: const ScrollPhysics(),
+            shrinkWrap: true,
+            children: List.generate(stores.length, (index) {
+              Store store = stores[index];
+              return InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.storeDetailsRoute);
+                },
+                child: Card(
+                  elevation: AppSize.s4,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(AppSize.s4),
                     ),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(AppSize.s4),
-                      ),
-                      child: Image.network(
-                        store.image,
-                        fit: BoxFit.cover,
-                        width: AppSize.s100,
-                        height: AppSize.s100,
-                      ),
+                    side: BorderSide(
+                      color: ColorManager.primary,
+                      width: AppSize.s1,
                     ),
                   ),
-                );
-              }).toList(),
-            ),
-          ]),
-        ),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(AppSize.s4),
+                    ),
+                    child: Image.network(
+                      store.image,
+                      fit: BoxFit.cover,
+                      width: AppSize.s80,
+                      height: AppSize.s80,
+                    ),
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
+        ]),
       );
     } else {
       return const SizedBox();

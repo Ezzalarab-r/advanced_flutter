@@ -1,12 +1,11 @@
 import 'dart:async';
-import 'dart:ffi';
-import 'package:advanced_flutter/presentation/common/state_renderer/state_renderer.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../../../domain/entities/service.dart';
 import '../../../../domain/entities/store.dart';
 import '../../../../domain/entities/banner.dart';
 import '../../../../domain/usecases/home_uc.dart';
+import '../../../common/state_renderer/state_renderer.dart';
 import '../../../base/base_vm.dart';
 import '../../../common/state_renderer/state_renderer_empl.dart';
 
@@ -33,11 +32,17 @@ class HomeVM extends BaseVM with HomeVMInput, HomeVMOutput {
   }
 
   _getHomeData() async {
-    inputState.add(LoadingState(
-      stateRendererType: StateRendererType.fullScreenLoadingState,
-      message: "Loading Home Data",
-    ));
-    (await _homeUC.execute(Void)).fold(
+    await Future.delayed(const Duration(milliseconds: 1), () {
+      inputState.add(
+        LoadingState(
+          stateRendererType: StateRendererType.fullScreenLoadingState,
+          message: "Loading Home Data",
+        ),
+      );
+    });
+    print("add LoadingState   ++++++++");
+
+    (await _homeUC.execute(null)).fold(
       (failure) {
         inputState.add(ErrorState(
           stateRendererType: StateRendererType.fullScreenErrorState,

@@ -24,19 +24,25 @@ class RepositoryImpl implements Repository {
   Future<Either<Failure, HomeObject>> getHomeData() async {
     if (await _networkInfo.isConeected) {
       try {
-        final resetPasswordResponse = await _remoteDS.getHomeData();
-        if (resetPasswordResponse.status == ApiInternalStatus.success) {
-          return Right(resetPasswordResponse.toDomain());
+        final homeDataResponse = await _remoteDS.getHomeData();
+        print("remote resetPasswordResponse ==============");
+        print(homeDataResponse.message);
+        print(homeDataResponse.status);
+
+        if (homeDataResponse.status == ApiInternalStatus.success) {
+          return Right(homeDataResponse.toDomain());
         } else {
           return Left(Failure(
               code: ApiInternalStatus.failure,
-              message:
-                  resetPasswordResponse.message ?? ResponseMessage.unknown));
+              message: homeDataResponse.message ?? ResponseMessage.unknown));
         }
       } catch (error) {
+        print("getHomeData catch error");
+        print(error);
         return Left(ErrorHandler.handle(error).failure);
       }
     } else {
+      print("no internet");
       return Left(ErrorSource.noInternetConnection.getFailure());
     }
   }

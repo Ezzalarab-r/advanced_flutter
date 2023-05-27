@@ -25,6 +25,9 @@ abstract class BaseVM extends BaseVMInputs with BaseVMOutputs {
   Sink get inputState => _inputSC.sink;
 
   @override
-  Stream<FlowState> get outputState =>
-      _inputSC.stream.map((flowState) => flowState);
+  Stream<FlowState> get outputState => _inputSC.stream.map((flowState) {
+        print("flowState.runtimeType /////////////////////////");
+        print(flowState.runtimeType);
+        return flowState;
+      });
 }
