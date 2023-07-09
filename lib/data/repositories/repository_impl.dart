@@ -1,6 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
+
 import 'package:advanced_flutter/data/data_sources/local_ds.dart';
 import 'package:advanced_flutter/domain/entities/home_object.dart';
-import 'package:dartz/dartz.dart';
 
 import '../../domain/entities/auth.dart';
 import '../../domain/repositories/repository.dart';
@@ -14,35 +17,45 @@ import '../requestes/login_request.dart';
 class RepositoryImpl implements Repository {
   final NetworkInfo _networkInfo;
   final RemoteDS _remoteDS;
+  final LocalDS _localDS;
+
   RepositoryImpl(
     this._networkInfo,
     this._remoteDS,
-    LocalDSImpl localDSImpl,
+    this._localDS,
   );
 
   @override
   Future<Either<Failure, HomeObject>> getHomeData() async {
     if (await _networkInfo.isConeected) {
       try {
-        final homeDataResponse = await _remoteDS.getHomeData();
-        print("remote resetPasswordResponse ==============");
-        print(homeDataResponse.message);
-        print(homeDataResponse.status);
-
-        if (homeDataResponse.status == ApiInternalStatus.success) {
-          return Right(homeDataResponse.toDomain());
-        } else {
-          return Left(Failure(
-              code: ApiInternalStatus.failure,
-              message: homeDataResponse.message ?? ResponseMessage.unknown));
+        final homeLocalDataResponse = await _localDS.getHomeData();
+        return Right(homeLocalDataResponse.toDomain());
+      } catch (cacheError) {
+        try {
+          final homeRemoteDataResponse = await _remoteDS.getHomeData();
+          if (homeRemoteDataResponse.status == ApiInternalStatus.success) {
+            // Success
+            _localDS.saveHomeToCache(homeRemoteDataResponse);
+            return Right(homeRemoteDataResponse.toDomain());
+          } else {
+            return Left(Failure(
+                code: ApiInternalStatus.failure,
+                message:
+                    homeRemoteDataResponse.message ?? ResponseMessage.unknown));
+          }
+        } catch (error) {
+          if (kDebugMode) {
+            print("getHomeData catch error");
+            print(error);
+          }
+          return Left(ErrorHandler.handle(error).failure);
         }
-      } catch (error) {
-        print("getHomeData catch error");
-        print(error);
-        return Left(ErrorHandler.handle(error).failure);
       }
     } else {
-      print("no internet");
+      if (kDebugMode) {
+        print("no internet");
+      }
       return Left(ErrorSource.noInternetConnection.getFailure());
     }
   }

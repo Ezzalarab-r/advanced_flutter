@@ -1,18 +1,14 @@
 import 'dart:async';
+import 'package:advanced_flutter/domain/entities/home_data.dart';
 import 'package:rxdart/rxdart.dart';
 
-import '../../../../domain/entities/service.dart';
-import '../../../../domain/entities/store.dart';
-import '../../../../domain/entities/banner.dart';
 import '../../../../domain/usecases/home_uc.dart';
 import '../../../common/state_renderer/state_renderer.dart';
 import '../../../base/base_vm.dart';
 import '../../../common/state_renderer/state_renderer_empl.dart';
 
 class HomeVM extends BaseVM with HomeVMInput, HomeVMOutput {
-  final StreamController _bannersSC = BehaviorSubject<List<Banner>>();
-  final StreamController _servicesSC = BehaviorSubject<List<Service>>();
-  final StreamController _storesSC = BehaviorSubject<List<Store>>();
+  final StreamController _homeDataSC = BehaviorSubject<HomeData>();
 
   final HomeUC _homeUC;
 
@@ -26,9 +22,7 @@ class HomeVM extends BaseVM with HomeVMInput, HomeVMOutput {
   @override
   void dispose() {
     super.dispose();
-    _bannersSC.close();
-    _servicesSC.close();
-    _storesSC.close();
+    _homeDataSC.close();
   }
 
   _getHomeData() async {
@@ -40,7 +34,6 @@ class HomeVM extends BaseVM with HomeVMInput, HomeVMOutput {
         ),
       );
     });
-    print("add LoadingState   ++++++++");
 
     (await _homeUC.execute(null)).fold(
       (failure) {
@@ -50,9 +43,7 @@ class HomeVM extends BaseVM with HomeVMInput, HomeVMOutput {
         ));
       },
       (homeObject) {
-        _bannersSC.add(homeObject.data.banners);
-        _servicesSC.add(homeObject.data.services);
-        _storesSC.add(homeObject.data.stores);
+        _homeDataSC.add(homeObject.data);
         inputState.add(ContentState());
       },
     );
@@ -62,38 +53,19 @@ class HomeVM extends BaseVM with HomeVMInput, HomeVMOutput {
   //
 
   @override
-  Sink get inputBanners => _bannersSC.sink;
-
-  @override
-  Sink get inputServices => _servicesSC.sink;
-
-  @override
-  Sink get inputStores => _storesSC.sink;
+  Sink get inputHomeData => _homeDataSC.sink;
 
   // Outputs
   //
 
   @override
-  Stream<List<Banner>> get outputBanners =>
-      _bannersSC.stream.map((banner) => banner);
-
-  @override
-  Stream<List<Service>> get outputServices =>
-      _servicesSC.stream.map((service) => service);
-
-  @override
-  Stream<List<Store>> get outputStores =>
-      _storesSC.stream.map((store) => store);
+  Stream<HomeData> get outputHomeData => _homeDataSC.stream.map((data) => data);
 }
 
 abstract class HomeVMOutput {
-  Sink get inputStores;
-  Sink get inputServices;
-  Sink get inputBanners;
+  Sink get inputHomeData;
 }
 
 abstract class HomeVMInput {
-  Stream<List<Store>> get outputStores;
-  Stream<List<Service>> get outputServices;
-  Stream<List<Banner>> get outputBanners;
+  Stream<HomeData> get outputHomeData;
 }

@@ -3,6 +3,9 @@ class DataConstants {
   static const int zero = 0;
   static Function doNothing = () {};
 
+  static const String cacheHomeKey = "cache_home_key";
+  static const int cachHomeInterval = 60; // 1 minute
+
   // Urls:
   static const String baseUrl = "https://advanced-flutter.mocklab.io/";
 
