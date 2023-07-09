@@ -6,16 +6,16 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../app/app_preferences.dart';
-import '../../../app/di.dart';
-import '../../../data/constants.dart';
-import '../../common/state_renderer/state_renderer_empl.dart';
-import '../../register/vm/register_vm.dart';
-import '../../resources/assets_manager.dart';
-import '../../resources/colors_manager.dart';
-import '../../resources/routes_manager.dart';
-import '../../resources/strings_manager.dart';
-import '../../resources/values_manager.dart';
+import '../../app/app_preferences.dart';
+import '../../app/di.dart';
+import '../../data/constants.dart';
+import '../common/state_renderer/state_renderer_empl.dart';
+import 'register_vm.dart';
+import '../resources/assets_manager.dart';
+import '../resources/colors_manager.dart';
+import '../resources/routes_manager.dart';
+import '../resources/strings_manager.dart';
+import '../resources/values_manager.dart';
 
 class RegisterV extends StatefulWidget {
   const RegisterV({super.key});

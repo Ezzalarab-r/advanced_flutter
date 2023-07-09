@@ -1,11 +1,11 @@
 import 'dart:async';
-import 'package:advanced_flutter/domain/entities/home_data.dart';
+import '../../../domain/entities/home_data.dart';
 import 'package:rxdart/rxdart.dart';
 
-import '../../../../domain/usecases/home_uc.dart';
-import '../../../common/state_renderer/state_renderer.dart';
-import '../../../base/base_vm.dart';
-import '../../../common/state_renderer/state_renderer_empl.dart';
+import '../../../domain/usecases/home_uc.dart';
+import '../../common/state_renderer/state_renderer.dart';
+import '../../base/base_vm.dart';
+import '../../common/state_renderer/state_renderer_empl.dart';
 
 class HomeVM extends BaseVM with HomeVMInput, HomeVMOutput {
   final StreamController _homeDataSC = BehaviorSubject<HomeData>();

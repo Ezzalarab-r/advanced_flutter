@@ -1,6 +1,5 @@
-import 'package:advanced_flutter/data/constants.dart';
-import 'package:advanced_flutter/data/failures/error_handler.dart';
-
+import '../constants.dart';
+import '../failures/error_handler.dart';
 import '../responses/responses.dart';
 
 abstract class LocalDS {

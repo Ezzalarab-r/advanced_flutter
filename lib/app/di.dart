@@ -1,7 +1,3 @@
-import 'package:advanced_flutter/domain/usecases/home_uc.dart';
-import 'package:advanced_flutter/domain/usecases/register_uc.dart';
-import 'package:advanced_flutter/presentation/main/home/vm/home_vm.dart';
-import 'package:advanced_flutter/presentation/register/vm/register_vm.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
@@ -16,9 +12,13 @@ import '../data/network/network_info.dart';
 import '../data/repositories/repository_impl.dart';
 import '../domain/repositories/repository.dart';
 import '../domain/usecases/forgot_password_uc.dart';
+import '../domain/usecases/home_uc.dart';
 import '../domain/usecases/login_uc.dart';
-import '../presentation/forgot_password/vm/forgot_password_vm.dart';
-import '../presentation/login/vm/login_vm.dart';
+import '../domain/usecases/register_uc.dart';
+import '../presentation/forgot_password/forgot_password_vm.dart';
+import '../presentation/login/login_vm.dart';
+import '../presentation/main/home/home_vm.dart';
+import '../presentation/register/register_vm.dart';
 import 'app_preferences.dart';
 
 final gi = GetIt.instance;

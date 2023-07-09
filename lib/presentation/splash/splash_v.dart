@@ -1,21 +1,23 @@
 import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../app/app_preferences.dart';
 import '../../app/di.dart';
 import '../resources/assets_manager.dart';
 import '../resources/colors_manager.dart';
 import '../resources/constants_manager.dart';
 import '../resources/routes_manager.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class SplashView extends StatefulWidget {
-  const SplashView({super.key});
+class SplashV extends StatefulWidget {
+  const SplashV({super.key});
 
   @override
-  State<SplashView> createState() => _SplashViewState();
+  State<SplashV> createState() => _SplashVState();
 }
 
-class _SplashViewState extends State<SplashView> {
+class _SplashVState extends State<SplashV> {
   Timer? _timer;
   final AppPreferences _appPreferences = gi<AppPreferences>();
 

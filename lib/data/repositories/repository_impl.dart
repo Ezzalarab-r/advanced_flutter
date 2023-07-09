@@ -2,11 +2,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:advanced_flutter/data/data_sources/local_ds.dart';
-import 'package:advanced_flutter/domain/entities/home_object.dart';
-
 import '../../domain/entities/auth.dart';
+import '../../domain/entities/home_object.dart';
 import '../../domain/repositories/repository.dart';
+import '../data_sources/local_ds.dart';
 import '../data_sources/remote_ds.dart';
 import '../failures/error_handler.dart';
 import '../failures/failure.dart';

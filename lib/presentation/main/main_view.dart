@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../app/app_preferences.dart';
 import '../../app/di.dart';
-import '../resources/strings_manager.dart';
 import '../resources/colors_manager.dart';
+import '../resources/strings_manager.dart';
 import '../resources/values_manager.dart';
-import 'home/v/home_v.dart';
-import 'notifications/v/notifications_v.dart';
-import 'search/v/search_v.dart';
-import 'settings/v/settings_v.dart';
+import 'home/home_v.dart';
+import 'notifications/notifications_v.dart';
+import 'search/search_v.dart';
+import 'settings/settings_v.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});

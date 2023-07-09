@@ -1,17 +1,17 @@
-import 'package:advanced_flutter/app/di.dart';
-import 'package:advanced_flutter/domain/entities/home_data.dart';
-import 'package:advanced_flutter/domain/entities/store.dart';
-import 'package:advanced_flutter/presentation/resources/colors_manager.dart';
-import 'package:advanced_flutter/presentation/resources/routes_manager.dart';
-import 'package:advanced_flutter/presentation/resources/strings_manager.dart';
-import 'package:advanced_flutter/presentation/resources/values_manager.dart';
+import '../../../app/di.dart';
+import '../../../domain/entities/home_data.dart';
+import '../../../domain/entities/store.dart';
+import '../../resources/colors_manager.dart';
+import '../../resources/routes_manager.dart';
+import '../../resources/strings_manager.dart';
+import '../../resources/values_manager.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../domain/entities/banner.dart' as b;
-import '../../../../domain/entities/service.dart' as s;
-import '../../../common/state_renderer/state_renderer_empl.dart';
-import '../../../main/home/vm/home_vm.dart';
+import '../../../domain/entities/banner.dart' as b;
+import '../../../domain/entities/service.dart' as s;
+import '../../common/state_renderer/state_renderer_empl.dart';
+import 'home_vm.dart';
 
 class HomeV extends StatefulWidget {
   const HomeV({super.key});

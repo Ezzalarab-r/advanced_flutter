@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:advanced_flutter/app/functions.dart';
-import 'package:advanced_flutter/domain/usecases/register_uc.dart';
-import 'package:advanced_flutter/presentation/resources/strings_manager.dart';
+import '../../app/functions.dart';
+import '../../domain/usecases/register_uc.dart';
+import '../resources/strings_manager.dart';
 
-import '../../base/base_vm.dart';
-import '../../common/freezed_data_class.dart';
-import '../../common/state_renderer/state_renderer.dart';
-import '../../common/state_renderer/state_renderer_empl.dart';
+import '../base/base_vm.dart';
+import '../common/freezed_data_class.dart';
+import '../common/state_renderer/state_renderer.dart';
+import '../common/state_renderer/state_renderer_empl.dart';
 
 class RegisterVM extends BaseVM with RegisterVMInputs, RegisterVMouts {
   final StreamController _userNameSC = StreamController<String>.broadcast();

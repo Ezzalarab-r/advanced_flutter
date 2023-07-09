@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../resources/strings_manager.dart';
+import '../../resources/strings_manager.dart';
 
 class NotificationsV extends StatefulWidget {
   const NotificationsV({super.key});

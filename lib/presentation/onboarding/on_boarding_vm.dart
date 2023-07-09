@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
-import '../../../domain/entities/slider_object.dart';
-import '../../../domain/entities/slider_view_object.dart';
-import '../../base/base_vm.dart';
-import '../../resources/assets_manager.dart';
-import '../../resources/strings_manager.dart';
+import '../../domain/entities/slider_object.dart';
+import '../../domain/entities/slider_view_object.dart';
+import '../base/base_vm.dart';
+import '../resources/assets_manager.dart';
+import '../resources/strings_manager.dart';
 
 class OnBoardingVM extends BaseVM with OnBoardingVMInputs, OnBoardingVMOutputs {
   final StreamController _streamController =

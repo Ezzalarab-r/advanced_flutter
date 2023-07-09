@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:advanced_flutter/presentation/base/base_vm.dart';
-import 'package:advanced_flutter/presentation/common/state_renderer/state_renderer_empl.dart';
+import '../../base/base_vm.dart';
+import '../../common/state_renderer/state_renderer_empl.dart';
 
 class ForgotPasswordVM extends BaseVM {
   final StreamController _emailSC = StreamController<String>.broadcast();

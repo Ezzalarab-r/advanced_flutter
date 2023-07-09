@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'colors_manager.dart';
 import 'fonts_manager.dart';
 import 'styles_manager.dart';
 import 'values_manager.dart';
-import 'package:flutter/material.dart';
 
 ThemeData getAppTheme() {
   return ThemeData(

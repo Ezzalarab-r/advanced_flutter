@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import '../../../domain/usecases/login_uc.dart';
-import '../../base/base_vm.dart';
-import '../../common/freezed_data_class.dart';
-import '../../common/state_renderer/state_renderer.dart';
-import '../../common/state_renderer/state_renderer_empl.dart';
+import '../../domain/usecases/login_uc.dart';
+import '../base/base_vm.dart';
+import '../common/freezed_data_class.dart';
+import '../common/state_renderer/state_renderer.dart';
+import '../common/state_renderer/state_renderer_empl.dart';
 
 class LoginVM extends BaseVM with LoginVMInputs, LoginVMOutputs {
   final StreamController _emailSC = StreamController<String>.broadcast();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../resources/strings_manager.dart';
+import '../../resources/strings_manager.dart';
 
 class SettingsV extends StatefulWidget {
   const SettingsV({super.key});
