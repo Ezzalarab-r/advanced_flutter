@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../domain/entities/auth.dart';
 import '../../domain/entities/home_object.dart';
+import '../../domain/entities/store_details.dart';
 import '../../domain/repositories/repository.dart';
 import '../data_sources/local_ds.dart';
 import '../data_sources/remote_ds.dart';
@@ -116,6 +117,43 @@ class RepositoryImpl implements Repository {
         return Left(ErrorHandler.handle(error).failure);
       }
     } else {
+      return Left(ErrorSource.noInternetConnection.getFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, StoreDetails>> getStoreDetails(int storeId) async {
+    if (await _networkInfo.isConeected) {
+      // try {
+      //   final homeLocalDataResponse = await _localDS.getStoreDetails(storeId);
+      //   return Right(homeLocalDataResponse.toDomain());
+      // } catch (cacheError) {
+      try {
+        final storeDetailsRemoteResponse =
+            await _remoteDS.getStoreDetails(storeId);
+        if (storeDetailsRemoteResponse.status == ApiInternalStatus.success) {
+          // Success
+          // _localDS.saveStoreDetailsToCache(storeDetailsRemoteResponse);
+          return Right(storeDetailsRemoteResponse.toDomain());
+        } else {
+          return Left(Failure(
+              code: ApiInternalStatus.failure,
+              message: storeDetailsRemoteResponse.message ??
+                  ResponseMessage.unknown));
+        }
+      } catch (error, s) {
+        if (kDebugMode) {
+          print("getStoreDetails $storeId error");
+          print(error);
+          print(s);
+        }
+        return Left(ErrorHandler.handle(error).failure);
+      }
+      // }
+    } else {
+      if (kDebugMode) {
+        print("no internet");
+      }
       return Left(ErrorSource.noInternetConnection.getFailure());
     }
   }

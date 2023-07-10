@@ -15,10 +15,12 @@ import '../domain/usecases/forgot_password_uc.dart';
 import '../domain/usecases/home_uc.dart';
 import '../domain/usecases/login_uc.dart';
 import '../domain/usecases/register_uc.dart';
+import '../domain/usecases/store_details_uc.dart';
 import '../presentation/forgot_password/forgot_password_vm.dart';
 import '../presentation/login/login_vm.dart';
 import '../presentation/main/home/home_vm.dart';
 import '../presentation/register/register_vm.dart';
+import '../presentation/store_details/store_details_vm.dart';
 import 'app_preferences.dart';
 
 final gi = GetIt.instance;
@@ -90,5 +92,13 @@ Future<void> initHomeModule() async {
   if (!gi.isRegistered<HomeUC>()) {
     gi.registerFactory<HomeUC>(() => HomeUC(gi<Repository>()));
     gi.registerFactory<HomeVM>(() => HomeVM(gi<HomeUC>()));
+  }
+}
+
+Future<void> initStoreDetails() async {
+  if (!gi.isRegistered<StoreDetailsUC>()) {
+    gi.registerFactory<StoreDetailsUC>(() => StoreDetailsUC(gi<Repository>()));
+    gi.registerFactory<StoreDetailsVM>(
+        () => StoreDetailsVM(gi<StoreDetailsUC>()));
   }
 }

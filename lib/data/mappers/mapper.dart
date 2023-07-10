@@ -1,3 +1,5 @@
+import 'package:advanced_flutter/domain/entities/store_details.dart';
+
 import '../../app/extensions.dart';
 import '../../domain/entities/auth.dart';
 import '../../domain/entities/store.dart';
@@ -136,5 +138,17 @@ extension HomeResponseMapper on HomeResponse? {
       banners: mappedBanners,
     );
     return HomeObject(data: data);
+  }
+}
+
+extension StoreDetailsMapper on StoreDetailsResponse? {
+  StoreDetails toDomain() {
+    return StoreDetails(
+        id: this?.id?.orZero() ?? DataConstants.zero,
+        title: this?.title?.orEmpty() ?? DataConstants.empty,
+        image: this?.image?.orEmpty() ?? DataConstants.empty,
+        details: this?.details?.orEmpty() ?? DataConstants.empty,
+        services: this?.services?.orEmpty() ?? DataConstants.empty,
+        about: this?.about?.orEmpty() ?? DataConstants.empty);
   }
 }

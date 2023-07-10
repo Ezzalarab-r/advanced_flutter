@@ -43,8 +43,8 @@ class HomeVM extends BaseVM with HomeVMInput, HomeVMOutput {
         ));
       },
       (homeObject) {
-        _homeDataSC.add(homeObject.data);
         inputState.add(ContentState());
+        _homeDataSC.add(homeObject.data);
       },
     );
   }

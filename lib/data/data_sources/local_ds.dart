@@ -5,6 +5,8 @@ import '../responses/responses.dart';
 abstract class LocalDS {
   Future<HomeResponse> getHomeData();
   Future<void> saveHomeToCache(HomeResponse homeResponse);
+  Future<StoreDetailsResponse> getStoreDetails(int storeId);
+  Future<void> saveStoreDetailsToCache(StoreDetailsResponse storeDetails);
   void clearCache();
   void removeFromCache(String key);
 }
@@ -33,6 +35,18 @@ class LocalDSImpl implements LocalDS {
 
   @override
   void removeFromCache(String key) => cacheData.remove(key);
+
+  @override
+  Future<StoreDetailsResponse> getStoreDetails(int storeId) {
+    // TODO: implement getStoreDetails
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> saveStoreDetailsToCache(StoreDetailsResponse storeDetails) {
+    // TODO: implement saveStoreDetailsToCache
+    throw UnimplementedError();
+  }
 }
 
 class CachedItem {
