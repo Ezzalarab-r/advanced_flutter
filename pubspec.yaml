@@ -15,8 +15,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   dio: ^5.0.1
+  easy_localization: ^3.0.2
   flutter:
     sdk: flutter
+  flutter_phoenix: ^1.1.1
   flutter_svg: ^1.1.6
   freezed: ^2.3.2
   get_it: ^7.2.0
@@ -56,6 +58,8 @@ flutter:
     - assets/json/empty-box.json
     - assets/json/success.json
     - assets/json/done.json
+    - assets/translations/ar-SA.json
+    - assets/translations/en-US.json
   fonts:
     - family: Montserrat
       fonts:

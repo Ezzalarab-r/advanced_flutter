@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+
 import '../../../app/di.dart';
 import '../../../domain/entities/home_data.dart';
 import '../../../domain/entities/store.dart';
@@ -127,7 +129,7 @@ class _HomeVState extends State<HomeV> {
       child: Text(
         title,
         style: Theme.of(context).textTheme.labelSmall,
-      ),
+      ).tr(),
     );
   }
 

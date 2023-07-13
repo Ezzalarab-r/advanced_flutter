@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
+
 import '../../app/functions.dart';
 import '../../domain/usecases/register_uc.dart';
 import '../resources/strings_manager.dart';
@@ -151,7 +153,7 @@ class RegisterVM extends BaseVM with RegisterVMInputs, RegisterVMouts {
 
   @override
   Stream<String?> get outUserNameError => outIsUserNameValid
-      .map((isValid) => isValid ? null : AppStrings.userNameShortMessage);
+      .map((isValid) => isValid ? null : AppStrings.userNameShortMessage.tr());
 
   @override
   Stream<bool> get outIsEmailValid =>
@@ -159,7 +161,7 @@ class RegisterVM extends BaseVM with RegisterVMInputs, RegisterVMouts {
 
   @override
   Stream<String?> get outEmailError => outIsEmailValid
-      .map((isValid) => isValid ? null : AppStrings.emailNotValidMessage);
+      .map((isValid) => isValid ? null : AppStrings.emailNotValidMessage.tr());
 
   @override
   Stream<bool> get outIsMobilNumberValid =>
@@ -167,7 +169,7 @@ class RegisterVM extends BaseVM with RegisterVMInputs, RegisterVMouts {
 
   @override
   Stream<String?> get outMobileNumberError => outIsMobilNumberValid
-      .map((isValid) => isValid ? null : AppStrings.mobileNotValidMessage);
+      .map((isValid) => isValid ? null : AppStrings.mobileNotValidMessage.tr());
 
   @override
   Stream<bool> get outIsPasswordValid =>
@@ -175,7 +177,7 @@ class RegisterVM extends BaseVM with RegisterVMInputs, RegisterVMouts {
 
   @override
   Stream<String?> get outPasswordError => outIsPasswordValid
-      .map((isValid) => isValid ? null : AppStrings.mobileNotValidMessage);
+      .map((isValid) => isValid ? null : AppStrings.mobileNotValidMessage.tr());
 
   @override
   Stream<File> get outProfilePicture =>

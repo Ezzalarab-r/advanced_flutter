@@ -133,7 +133,7 @@ class _AppServiceClient implements AppServiceClient {
   }
 
   @override
-  Future<StoreDetailsResponse> getStoreDetails() async {
+  Future<StoreDetailsResponse> getStoreDetails(storeId) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -146,7 +146,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              '/storeDetails/1',
+              '/store_details/${storeId}',
               queryParameters: queryParameters,
               data: _data,
             )

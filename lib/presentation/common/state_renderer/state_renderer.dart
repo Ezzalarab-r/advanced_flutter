@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -58,7 +59,7 @@ class StateRenderer extends StatelessWidget {
             _getAnimatedImage(JsonAssets.error),
             _getMessage(message),
             _getRetryButton(
-              title: AppStrings.ok,
+              title: AppStrings.ok.tr(),
               context: context,
             ),
           ],
@@ -70,7 +71,7 @@ class StateRenderer extends StatelessWidget {
             _getAnimatedImage(JsonAssets.success),
             _getMessage(message),
             _getRetryButton(
-              title: AppStrings.ok,
+              title: AppStrings.ok.tr(),
               context: context,
             ),
           ],
@@ -86,7 +87,7 @@ class StateRenderer extends StatelessWidget {
             _getAnimatedImage(JsonAssets.error),
             _getMessage(message),
             _getRetryButton(
-              title: AppStrings.retryAgain,
+              title: AppStrings.retryAgain.tr(),
               context: context,
             ),
           ],
@@ -181,7 +182,7 @@ class StateRenderer extends StatelessWidget {
             fontColor: ColorManager.black,
             fontSize: 14,
           ).copyWith(height: 2),
-        ),
+        ).tr(),
       ),
     );
   }

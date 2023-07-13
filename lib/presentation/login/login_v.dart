@@ -1,8 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../app/app_preferences.dart';
+import '../../app/app_prefs.dart';
 import '../../app/di.dart';
 import '../common/state_renderer/state_renderer_empl.dart';
 import '../resources/assets_manager.dart';
@@ -24,7 +25,7 @@ class _LoginVState extends State<LoginV> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final AppPreferences _appPreferences = gi<AppPreferences>();
+  final AppPrefs _appPreferences = gi<AppPrefs>();
 
   @override
   void initState() {
@@ -93,11 +94,11 @@ class _LoginVState extends State<LoginV> {
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        hintText: AppStrings.email,
-                        labelText: AppStrings.email,
+                        hintText: AppStrings.email.tr(),
+                        labelText: AppStrings.email.tr(),
                         errorText: (snapshot.data ?? true)
                             ? null
-                            : AppStrings.emailError,
+                            : AppStrings.emailError.tr(),
                       ),
                     );
                   },
@@ -112,8 +113,8 @@ class _LoginVState extends State<LoginV> {
                     return TextFormField(
                       controller: _passwordController,
                       decoration: InputDecoration(
-                        hintText: AppStrings.password,
-                        labelText: AppStrings.password,
+                        hintText: AppStrings.password.tr(),
+                        labelText: AppStrings.password.tr(),
                         errorText: (snapshot.data ?? true)
                             ? null
                             : AppStrings.passwordError,
@@ -137,7 +138,7 @@ class _LoginVState extends State<LoginV> {
                                 _loginVM.login();
                               }
                             : null,
-                        child: const Text(AppStrings.login),
+                        child: const Text(AppStrings.login).tr(),
                       ),
                     );
                   },
@@ -154,7 +155,7 @@ class _LoginVState extends State<LoginV> {
                             context, Routes.forgotPasswordRoute);
                       },
                       child: Text(
-                        AppStrings.forgitPassword,
+                        AppStrings.forgitPassword.tr(),
                         style: Theme.of(context).textTheme.titleMedium,
                         textAlign: TextAlign.end,
                       ),
@@ -165,7 +166,7 @@ class _LoginVState extends State<LoginV> {
                             context, Routes.registerRoute);
                       },
                       child: Text(
-                        AppStrings.notRegistered,
+                        AppStrings.notRegistered.tr(),
                         style: Theme.of(context).textTheme.titleMedium,
                         textAlign: TextAlign.end,
                       ),

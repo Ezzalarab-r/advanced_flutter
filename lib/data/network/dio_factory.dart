@@ -3,17 +3,17 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import '../../app/app_preferences.dart';
+import '../../app/app_prefs.dart';
 import '../../data/constants.dart';
 
 class DioFactory {
-  final AppPreferences _appPreferences;
+  final AppPrefs _appPreferences;
   DioFactory(
     this._appPreferences,
   );
 
   Future<Dio> getDio() async {
-    String appLanguage = await _appPreferences.getAppLanguage();
+    String appLanguage = await _appPreferences.getAppLang();
 
     Dio dio = Dio();
     Map<String, String> headers = {

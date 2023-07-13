@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -83,11 +84,11 @@ class _ForgotPasswordVState extends State<ForgotPasswordV> {
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        hintText: AppStrings.email,
-                        labelText: AppStrings.email,
+                        hintText: AppStrings.email.tr(),
+                        labelText: AppStrings.email.tr(),
                         errorText: (snapshot.data ?? true)
                             ? null
-                            : AppStrings.emailError,
+                            : AppStrings.emailError.tr(),
                       ),
                     );
                   },
@@ -108,7 +109,7 @@ class _ForgotPasswordVState extends State<ForgotPasswordV> {
                                 _forgotPasswordVM.forgotPassword();
                               }
                             : null,
-                        child: const Text(AppStrings.submit),
+                        child: const Text(AppStrings.submit).tr(),
                       ),
                     );
                   },

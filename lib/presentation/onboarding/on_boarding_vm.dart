@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
+
 import '../../domain/entities/slider_object.dart';
 import '../../domain/entities/slider_view_object.dart';
 import '../base/base_vm.dart';
@@ -59,13 +61,13 @@ class OnBoardingVM extends BaseVM with OnBoardingVMInputs, OnBoardingVMOutputs {
 
   List<SliderObject> _getSliderData() => [
         SliderObject(
-          title: AppStrings.onBoardingTitle1,
-          subTitle: AppStrings.onBoardingSubTitle1,
+          title: AppStrings.onBoardingTitle1.tr(),
+          subTitle: AppStrings.onBoardingSubTitle1.tr(),
           image: ImagesAssets.artificialBrain,
         ),
         SliderObject(
-          title: AppStrings.onBoardingTitle2,
-          subTitle: AppStrings.onBoardingSubTitle2,
+          title: AppStrings.onBoardingTitle2.tr(),
+          subTitle: AppStrings.onBoardingSubTitle2.tr(),
           image: ImagesAssets.python,
         ),
       ];

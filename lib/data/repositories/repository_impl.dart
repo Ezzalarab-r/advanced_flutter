@@ -1,11 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dartz/dartz.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../domain/entities/auth.dart';
 import '../../domain/entities/home_object.dart';
 import '../../domain/entities/store_details.dart';
 import '../../domain/repositories/repository.dart';
+import '../../presentation/resources/strings_manager.dart';
 import '../data_sources/local_ds.dart';
 import '../data_sources/remote_ds.dart';
 import '../failures/error_handler.dart';
@@ -42,7 +44,7 @@ class RepositoryImpl implements Repository {
             return Left(Failure(
                 code: ApiInternalStatus.failure,
                 message:
-                    homeRemoteDataResponse.message ?? ResponseMessage.unknown));
+                    homeRemoteDataResponse.message ?? AppStrings.unknown.tr()));
           }
         } catch (error) {
           if (kDebugMode) {
@@ -70,7 +72,7 @@ class RepositoryImpl implements Repository {
         } else {
           return Left(Failure(
               code: ApiInternalStatus.failure,
-              message: authResponse.message ?? ResponseMessage.unknown));
+              message: authResponse.message ?? AppStrings.unknown.tr()));
         }
       } catch (error) {
         return Left(ErrorHandler.handle(error).failure);
@@ -91,7 +93,7 @@ class RepositoryImpl implements Repository {
           return Left(Failure(
               code: ApiInternalStatus.failure,
               message:
-                  resetPasswordResponse.message ?? ResponseMessage.unknown));
+                  resetPasswordResponse.message ?? AppStrings.unknown.tr()));
         }
       } catch (error) {
         return Left(ErrorHandler.handle(error).failure);
@@ -111,7 +113,7 @@ class RepositoryImpl implements Repository {
         } else {
           return Left(Failure(
               code: ApiInternalStatus.failure,
-              message: authResponse.message ?? ResponseMessage.unknown));
+              message: authResponse.message ?? AppStrings.unknown.tr()));
         }
       } catch (error) {
         return Left(ErrorHandler.handle(error).failure);
@@ -139,7 +141,7 @@ class RepositoryImpl implements Repository {
           return Left(Failure(
               code: ApiInternalStatus.failure,
               message: storeDetailsRemoteResponse.message ??
-                  ResponseMessage.unknown));
+                  AppStrings.unknown.tr()));
         }
       } catch (error, s) {
         if (kDebugMode) {

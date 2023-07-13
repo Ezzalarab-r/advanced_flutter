@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../app/app_preferences.dart';
+import '../../app/app_prefs.dart';
 import '../../app/di.dart';
 import '../resources/assets_manager.dart';
 import '../resources/colors_manager.dart';
@@ -19,7 +19,7 @@ class SplashV extends StatefulWidget {
 
 class _SplashVState extends State<SplashV> {
   Timer? _timer;
-  final AppPreferences _appPreferences = gi<AppPreferences>();
+  final AppPrefs _appPreferences = gi<AppPrefs>();
 
   _startDelay() {
     _timer = Timer(

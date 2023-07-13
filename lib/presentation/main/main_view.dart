@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../app/app_preferences.dart';
+import '../../app/app_prefs.dart';
 import '../../app/di.dart';
 import '../resources/colors_manager.dart';
 import '../resources/strings_manager.dart';
@@ -35,7 +36,7 @@ class _MainViewState extends State<MainView> {
   String _pageTitle = "Home";
   int _currentPageIndex = 0;
 
-  AppPreferences ap = gi<AppPreferences>();
+  AppPrefs ap = gi<AppPrefs>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +81,7 @@ class _MainViewState extends State<MainView> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.more_vert_outlined,
+                Icons.settings_outlined,
               ),
               label: "settings",
             ),
@@ -93,7 +94,7 @@ class _MainViewState extends State<MainView> {
   onTap(int index) {
     setState(() {
       _currentPageIndex = index;
-      _pageTitle = _titles[index];
+      _pageTitle = _titles[index].tr();
     });
   }
 }

@@ -21,7 +21,7 @@ import '../presentation/login/login_vm.dart';
 import '../presentation/main/home/home_vm.dart';
 import '../presentation/register/register_vm.dart';
 import '../presentation/store_details/store_details_vm.dart';
-import 'app_preferences.dart';
+import 'app_prefs.dart';
 
 final gi = GetIt.instance;
 
@@ -32,8 +32,7 @@ Future<void> initAppModule() async {
 
   // AppPreference
   gi.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
-  gi.registerLazySingleton<AppPreferences>(
-      () => AppPreferences(gi<SharedPreferences>()));
+  gi.registerLazySingleton<AppPrefs>(() => AppPrefs(gi<SharedPreferences>()));
 
   // Network Info
   gi.registerLazySingleton<InternetConnectionChecker>(
@@ -43,7 +42,7 @@ Future<void> initAppModule() async {
       () => NetworkInfoImpl(gi<InternetConnectionChecker>()));
 
   // Dio
-  gi.registerLazySingleton<DioFactory>(() => DioFactory(gi<AppPreferences>()));
+  gi.registerLazySingleton<DioFactory>(() => DioFactory(gi<AppPrefs>()));
   Dio dio = await gi<DioFactory>().getDio();
 
   // App Service Client

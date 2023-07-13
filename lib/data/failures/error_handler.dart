@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 
+import '../../presentation/resources/strings_manager.dart';
 import 'failure.dart';
 
 class ErrorHandler implements Exception {
@@ -84,72 +86,72 @@ extension DataSourceExtention on ErrorSource {
       case ErrorSource.success:
         return Failure(
           code: ResponseCode.success,
-          message: ResponseMessage.success,
+          message: AppStrings.success.tr(),
         );
       case ErrorSource.noContent:
         return Failure(
           code: ResponseCode.noContent,
-          message: ResponseMessage.noContent,
+          message: AppStrings.noContent.tr(),
         );
       case ErrorSource.badRequest:
         return Failure(
           code: ResponseCode.badRequest,
-          message: ResponseMessage.badRequest,
+          message: AppStrings.badRequest.tr(),
         );
       case ErrorSource.forbidden:
         return Failure(
           code: ResponseCode.success,
-          message: ResponseMessage.success,
+          message: AppStrings.success.tr(),
         );
       case ErrorSource.unAuthorized:
         return Failure(
           code: ResponseCode.success,
-          message: ResponseMessage.success,
+          message: AppStrings.success.tr(),
         );
       case ErrorSource.notFound:
         return Failure(
           code: ResponseCode.success,
-          message: ResponseMessage.success,
+          message: AppStrings.success.tr(),
         );
       case ErrorSource.internalServerError:
         return Failure(
           code: ResponseCode.success,
-          message: ResponseMessage.success,
+          message: AppStrings.success.tr(),
         );
       case ErrorSource.connectionTimeOut:
         return Failure(
           code: ResponseCode.success,
-          message: ResponseMessage.success,
+          message: AppStrings.success.tr(),
         );
       case ErrorSource.cancle:
         return Failure(
           code: ResponseCode.success,
-          message: ResponseMessage.success,
+          message: AppStrings.success.tr(),
         );
       case ErrorSource.recieveTimeOut:
         return Failure(
           code: ResponseCode.success,
-          message: ResponseMessage.success,
+          message: AppStrings.success.tr(),
         );
       case ErrorSource.sendTimeOut:
         return Failure(
           code: ResponseCode.success,
-          message: ResponseMessage.success,
+          message: AppStrings.success.tr(),
         );
       case ErrorSource.cacheError:
         return Failure(
           code: ResponseCode.success,
-          message: ResponseMessage.success,
+          message: AppStrings.success.tr(),
         );
       case ErrorSource.noInternetConnection:
         return Failure(
           code: ResponseCode.success,
-          message: ResponseMessage.success,
+          message: AppStrings.success.tr(),
         );
       case ErrorSource.unKnown:
         return Failure(
           code: ResponseCode.unknown,
-          message: ResponseMessage.unknown,
+          message: AppStrings.unknown.tr(),
         );
     }
   }
@@ -172,26 +174,6 @@ class ResponseCode {
   static const int cacheError = -5;
   static const int noInternetConnection = -6;
   static const int unknown = -7;
-}
-
-class ResponseMessage {
-  static const String success = "Success";
-  static const String noContent = "Success, No Content";
-  static const String badRequest = "Bad Request";
-  static const String unAuthorized = "User Is Unaouthorized";
-  static const String forbidden = "Forbidden Request";
-  static const String notFound = "Not Found";
-  static const String internalServerError =
-      "Some Thing Whent Wrong, Try Again Later";
-
-  static const String connectionTimeOut = "Time Out Error, Try Again Later";
-  static const String cancle = "Request Was Cancelled";
-  static const String recieveTimeOut = "Time Out Error";
-  static const String sendTimeOut = "Time Out Error";
-  static const String cacheError = "Cache Error";
-  static const String noInternetConnection =
-      "Please Check Your Internet Connection";
-  static const String unknown = "Some Thing Whent Wrong, Try Again Later";
 }
 
 class ApiInternalStatus {

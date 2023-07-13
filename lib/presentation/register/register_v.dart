@@ -1,12 +1,13 @@
 import 'dart:io';
 
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../app/app_preferences.dart';
+import '../../app/app_prefs.dart';
 import '../../app/di.dart';
 import '../../data/constants.dart';
 import '../common/state_renderer/state_renderer_empl.dart';
@@ -27,7 +28,7 @@ class RegisterV extends StatefulWidget {
 class _RegisterVState extends State<RegisterV> {
   final RegisterVM _registerVM = gi<RegisterVM>();
   final _formKey = GlobalKey<FormState>();
-  final AppPreferences _appPreferences = gi<AppPreferences>();
+  final AppPrefs _appPreferences = gi<AppPrefs>();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -74,7 +75,7 @@ class _RegisterVState extends State<RegisterV> {
                 ListTile(
                   trailing: const Icon(Icons.arrow_forward),
                   leading: const Icon(Icons.camera),
-                  title: const Text(AppStrings.photoGallery),
+                  title: const Text(AppStrings.photoGallery).tr(),
                   onTap: () {
                     _pickImageFromGallery();
                     Navigator.of(context).pop();
@@ -83,7 +84,7 @@ class _RegisterVState extends State<RegisterV> {
                 ListTile(
                   trailing: const Icon(Icons.arrow_forward),
                   leading: const Icon(Icons.camera_alt_rounded),
-                  title: const Text(AppStrings.camera),
+                  title: const Text(AppStrings.camera).tr(),
                   onTap: () {
                     _pickImageFromCamera();
                     Navigator.of(context).pop();
@@ -173,11 +174,11 @@ class _RegisterVState extends State<RegisterV> {
                     return TextFormField(
                       controller: _userNameController,
                       decoration: InputDecoration(
-                        hintText: AppStrings.userName,
-                        labelText: AppStrings.userName,
+                        hintText: AppStrings.userName.tr(),
+                        labelText: AppStrings.userName.tr(),
                         errorText: (snapshot.data ?? true)
                             ? null
-                            : AppStrings.userNameShortMessage,
+                            : AppStrings.userNameShortMessage.tr(),
                       ),
                     );
                   },
@@ -213,11 +214,11 @@ class _RegisterVState extends State<RegisterV> {
                               controller: _mobileNumberController,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                hintText: AppStrings.mobileNumber,
-                                labelText: AppStrings.mobileNumber,
+                                hintText: AppStrings.mobileNumber.tr(),
+                                labelText: AppStrings.mobileNumber.tr(),
                                 errorText: (snapshot.data ?? true)
                                     ? null
-                                    : AppStrings.mobileNotValidMessage,
+                                    : AppStrings.mobileNotValidMessage.tr(),
                               ),
                             );
                           },
@@ -237,11 +238,11 @@ class _RegisterVState extends State<RegisterV> {
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        hintText: AppStrings.email,
-                        labelText: AppStrings.email,
+                        hintText: AppStrings.email.tr(),
+                        labelText: AppStrings.email.tr(),
                         errorText: (snapshot.data ?? true)
                             ? null
-                            : AppStrings.emailError,
+                            : AppStrings.emailError.tr(),
                       ),
                     );
                   },
@@ -256,8 +257,8 @@ class _RegisterVState extends State<RegisterV> {
                     return TextFormField(
                       controller: _passwordController,
                       decoration: InputDecoration(
-                        hintText: AppStrings.password,
-                        labelText: AppStrings.password,
+                        hintText: AppStrings.password.tr(),
+                        labelText: AppStrings.password.tr(),
                         errorText: (snapshot.data ?? true)
                             ? null
                             : AppStrings.passwordError,
@@ -307,7 +308,7 @@ class _RegisterVState extends State<RegisterV> {
                                 _registerVM.register();
                               }
                             : null,
-                        child: const Text(AppStrings.register),
+                        child: const Text(AppStrings.register).tr(),
                       ),
                     );
                   },
@@ -323,7 +324,7 @@ class _RegisterVState extends State<RegisterV> {
                     );
                   },
                   child: Text(
-                    AppStrings.alreadyHaveAccount,
+                    AppStrings.alreadyHaveAccount.tr(),
                     style: Theme.of(context).textTheme.titleMedium,
                     textAlign: TextAlign.end,
                   ),
@@ -345,10 +346,10 @@ class _RegisterVState extends State<RegisterV> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Flexible(
-            child: Text(
+          Flexible(
+            child: const Text(
               AppStrings.profilePicture,
-            ),
+            ).tr(),
           ),
           Flexible(
             child: StreamBuilder(
